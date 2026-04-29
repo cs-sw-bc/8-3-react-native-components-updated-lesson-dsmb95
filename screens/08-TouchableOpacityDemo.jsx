@@ -4,7 +4,7 @@
 // activeOpacity controls how faded the button gets on press (0–1).
 
 import { useState } from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 
 // TODO 1: Import TouchableOpacity from 'react-native'
 
@@ -20,10 +20,15 @@ export default function TouchableOpacityDemo() {
       {/* TODO 2: Add a TouchableOpacity that increments count on press
                   Style it using styles.button, add activeOpacity={0.7}
                   Put a Text label inside it */}
+      <TouchableOpacity style={styles.button} onPress={() => setCount(count + 1)} activeOpacity={0.5}>
+        <Text style={styles.buttonText}>Click Me</Text>
+        </TouchableOpacity>
 
       {/* TODO 3: Add a second TouchableOpacity that resets count to 0
                   Use styles.resetButton for a different colour */}
-
+      <TouchableOpacity style={styles.button} onPress={() => setCount(0)} activeOpacity={0.5}>
+        <Text style={styles.buttonText}>Restart</Text>
+      </TouchableOpacity>
     </View>
   );
 }

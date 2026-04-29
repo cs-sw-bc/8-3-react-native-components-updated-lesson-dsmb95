@@ -3,6 +3,8 @@
 // On iOS, content can overlap the notch if you use a plain View as your root.
 
 import { View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context'
+
 
 export default function SafeAreaDemo() {
 
@@ -12,7 +14,7 @@ export default function SafeAreaDemo() {
   //         doesn't overlap the notch or home indicator
 
   return (
-    <View style={styles.safeArea}>
+    <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <Text style={styles.heading}>SafeAreaView Demo</Text>
         <Text style={styles.body}>
@@ -24,7 +26,7 @@ export default function SafeAreaDemo() {
           with a notch — notice the content shifts up behind the status bar.
         </Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

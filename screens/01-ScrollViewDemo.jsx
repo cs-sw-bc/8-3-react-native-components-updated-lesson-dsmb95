@@ -2,7 +2,7 @@
 // Topic: ScrollView
 // Without ScrollView, content that goes off-screen is clipped.
 
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 export default function ScrollViewDemo() {
 
@@ -11,13 +11,13 @@ export default function ScrollViewDemo() {
   // TODO 2: Wrap the content below in a ScrollView instead of a View
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       {Array.from({ length: 30 }, (_, i) => (
         <View key={i} style={styles.row}>
           <Text style={styles.text}>Line {i + 1}</Text>
         </View>
       ))}
-    </View>
+    </ScrollView>
   );
 }
 

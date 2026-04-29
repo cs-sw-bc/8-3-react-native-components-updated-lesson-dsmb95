@@ -2,15 +2,20 @@
 // Topic: FlatList
 // FlatList only renders items currently visible on screen — more performant than ScrollView for lists.
 
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 
 // TODO 1: Import FlatList from 'react-native'
 
-const FRUITS = [
+let FRUITS = [
   'Apple', 'Banana', 'Mango', 'Orange', 'Pineapple',
   'Grape', 'Watermelon', 'Strawberry', 'Blueberry', 'Peach',
   'Kiwi', 'Papaya', 'Lychee', 'Guava', 'Coconut',
+  'Cherry', 'Pear', 'Plum', 'Apricot', 'Raspberry',
+  'Blackberry', 'Cantaloupe', 'Honeydew', 'Pomegranate', 'Fig',
+  'Dragon Fruit', 'Passion Fruit', 'Lemon', 'Lime', 'Grapefruit',
 ];
+
+// FRUITS=[]
 
 export default function FlatListDemo() {
   return (
@@ -18,11 +23,24 @@ export default function FlatListDemo() {
       {/* TODO 2: Replace this View with a FlatList component
           - data={FRUITS}
           - keyExtractor={(item) => item}
+          - Complex Obj - keyExtractor={(item) => item.id}
           - renderItem should show each fruit in a row with its index
           - Add a ListHeaderComponent showing "🍎 Fruit List"
           - Add a ListEmptyComponent showing "No fruits found."
           - Add an ItemSeparatorComponent with a 1px grey line
       */}
+      <FlatList
+        data={FRUITS}
+        keyExtractor = {(item) => item}
+        renderItem={({ item, index }) => (
+        <View style={styles.item}>
+          <Text style={styles.index}>{index + 1}</Text>
+          <Text style={styles.label}>{item}</Text>
+        </View>
+      )}
+      ListEmptyComponent={<Text>No more fruits to display. Come back later.</Text>}
+      ItemSeparatorComponent={() => <View style={styles.separator}></View>}
+      />
     </View>
   );
 }

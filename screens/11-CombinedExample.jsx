@@ -3,7 +3,7 @@
 // TextInput + Button + Alert validation + keyboard dismiss + conditional rendering
 
 import { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Text, StyleSheet, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 // TODO 1: Import Alert, TouchableWithoutFeedback, and Keyboard from 'react-native'
 
@@ -17,16 +17,33 @@ export default function CombinedExample() {
 
   const handleSubmit = () => {
     // TODO 2: Validate that name is not empty — show an Alert if it is
+    if (!form.name) {
+      return Alert.alert('Please place a name')
+    }
     // TODO 3: Validate that email is not empty — show an Alert if it is
+    if (!form.email) {
+      return Alert.alert('Please place an email')
+    }
     // TODO 4: If both are filled, dismiss the keyboard and set submitted to true
+    if (form.name && form.email) {
+      Keyboard.dismiss;
+      setSubmitted(true);
+    }
   };
 
   const handleReset = () => {
     // TODO 5: Reset form to empty strings and set submitted back to false
+    setForm({
+      name: '',
+      email: '',
+    });
+    setSubmitted(false);
   };
 
   return (
     // TODO 6: Wrap the outer View in TouchableWithoutFeedback to dismiss keyboard on tap outside
+    
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
     <View style={styles.container}>
       <Text style={styles.heading}>Sign Up</Text>
 
@@ -61,6 +78,7 @@ export default function CombinedExample() {
         </>
       )}
     </View>
+    </TouchableWithoutFeedback>
   );
 }
 

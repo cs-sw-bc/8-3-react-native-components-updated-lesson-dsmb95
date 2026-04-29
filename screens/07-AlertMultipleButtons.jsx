@@ -2,23 +2,40 @@
 // Topic: Alert with multiple buttons
 // Each button can have its own label, style, and onPress handler.
 
-import { View, Button, Text, StyleSheet } from 'react-native';
+import { View, Button, Text, StyleSheet, Alert } from 'react-native';
 
 // TODO 1: Import Alert from 'react-native'
 
 export default function AlertMultipleButtons() {
 
   const handleDelete = () => {
-    // TODO 2: Show an Alert with title "Delete item?"
-    //         Add two buttons:
-    //         - "Cancel" with style: 'cancel'
-    //         - "Delete" with style: 'destructive' that shows another Alert on press
+    Alert.alert(
+      'Delete item?',
+      undefined,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Delete',
+          style: 'destructive',
+          onPress: () => Alert.alert('Item successfully deleted'),
+        },
+      ]
+    );
   };
 
   const handleChoice = () => {
     // TODO 3: Show an Alert with title "Where to next?"
     //         Add three buttons: "Home", "Profile", and "Cancel"
     //         Each of Home and Profile should show an Alert on press
+    Alert.alert(
+      "Where to next?",
+      undefined,
+      [
+        {text: "Home", onPress:() => Alert.alert('Welcome home!')},
+        {text: "Profile", onPress:() => Alert.alert('Welcome to your profile!')},
+        {text: "Cancel", style: "cancel"}
+      ]
+    )
   };
 
   return (
